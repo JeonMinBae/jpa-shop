@@ -1,0 +1,45 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.study'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //jpa
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    //thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    //lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    //devTools
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    //h2
+    runtimeOnly 'com.h2database:h2'
+    //p6spy 개발환경에서만 사용하길 권장
+    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0'
+    //validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
